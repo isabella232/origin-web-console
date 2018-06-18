@@ -8753,16 +8753,16 @@ getDomainName: t
 };
 } ]), angular.module("openshiftConsole").constant("KubevirtVersions", {
 virtualMachine: {
-resource: "offlinevirtualmachines",
-group: "kubevirt.io",
-version: "v1alpha1",
-kind: "OfflineVirtualMachine"
-},
-virtualMachineInstance: {
 resource: "virtualmachines",
 group: "kubevirt.io",
-version: "v1alpha1",
+version: "v1alpha2",
 kind: "VirtualMachine"
+},
+virtualMachineInstance: {
+resource: "virtualmachineinstances",
+group: "kubevirt.io",
+version: "v1alpha2",
+kind: "VirtualMachineInstance"
 }
 }), angular.module("openshiftConsole").controller("VirtualMachineInstanceController", [ "$filter", "$routeParams", "$scope", "APIService", "DataService", "Navigate", "MetricsService", "ProjectsService", "KubevirtVersions", "VmHelpers", function(e, t, n, r, a, o, i, s, c, l) {
 function u() {
