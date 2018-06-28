@@ -8809,7 +8809,7 @@ a.unwatchAll(p);
 } ]), angular.module("openshiftConsole").filter("ovmReference", function() {
 return function(e) {
 return _(_.get(e, "metadata.ownerReferences")).filter({
-kind: "OfflineVirtualMachine"
+kind: "VirtualMachine"
 }).first();
 };
 }), angular.module("openshiftConsole").factory("VmActions", [ "DataService", "KubevirtVersions", function(e, t) {
