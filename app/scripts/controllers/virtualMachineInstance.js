@@ -2,10 +2,13 @@
 
 angular.module('openshiftConsole')
   .controller('VirtualMachineInstanceController', function ($filter,
+                                         $rootScope,
                                          $routeParams,
                                          $scope,
+                                         $timeout,
                                          APIService,
                                          DataService,
+                                         FullscreenService,
                                          Navigate,
                                          MetricsService,
                                          ProjectsService,
@@ -14,6 +17,7 @@ angular.module('openshiftConsole')
     $scope.projectName = $routeParams.project;
     $scope.alerts = {};
     $scope.logOptions = {};
+    $scope.terminalTabWasSelected = false;
     $scope.breadcrumbs = [
       {
         title: 'Virtual Machines',
@@ -60,6 +64,106 @@ angular.module('openshiftConsole')
       $scope.pods = VmHelpers.filterVmiPods(allPods, $scope.vmi.metadata.name);
     }
 
+    // ---- Start of Terminal
+    var calculateCharacterBoundingBox = function() {
+      var calcSpan = $("<span>")
+        .css({
+          position: "absolute",
+          top: "-100px"
+        })
+        .addClass("terminal-font")
+        .text(_.repeat('x', 10))
+        .appendTo('body');
+      var vals = {
+        width: calcSpan.width() / 10, // average across several characters to take into account internal spacing
+        height: calcSpan.height()
+      };
+      calcSpan.remove();
+      return vals;
+    };
+
+    var characterBoundingBox = calculateCharacterBoundingBox();
+    var win = $( window );
+    var calculateTerminalSize = function(retries){
+      if (!retries) {
+        retries = 0;
+      }
+
+      if (!characterBoundingBox.height || !characterBoundingBox.width || !$scope.selectedTab.terminal || retries > 10) {
+        return;
+      }
+      $scope.$evalAsync(function() {
+        var terminalWrapper = $('.container-terminal-wrapper').get(0);
+        // `terminalWrapper` may not exist yet, we should retry
+        if (!terminalWrapper) {
+          $timeout(function(){
+            calculateTerminalSize(retries + 1);
+          }, 50);
+          return;
+        }
+
+        var r = terminalWrapper.getBoundingClientRect();
+        // Check if the content under the terminal tab isnt fully appended to the DOM yet, in that case
+        // there is no bounding box yet so we can't calculate the right width / height. Retry.
+        if (r.left === 0 && r.top === 0 && r.width === 0 && r.height === 0) {
+          $timeout(function(){
+            calculateTerminalSize(retries + 1);
+          }, 50);
+          return;
+        }
+        var windowHeight = win.height();
+        var termWidth = r.width - 17; // 17px is roughly the width of an average scrollbar
+        var termHeight = windowHeight - r.top - 36;
+        $scope.terminalCols = Math.max(_.floor(termWidth / characterBoundingBox.width), 80);
+        $scope.terminalRows = Math.max(_.floor(termHeight / characterBoundingBox.height), 24);
+      });
+    };
+
+    // Listen for nav toggles so we can resize the terminal window.
+    var toggleNavListener = null;
+    var addTerminalResizeListeners = function() {
+      $(window).on('resize.terminalsize', _.debounce(calculateTerminalSize, 100));
+      if (!toggleNavListener) {
+        toggleNavListener = $rootScope.$on('oscHeader.toggleNav', function() {
+          // Wait for the Patternfly animation to complete. Transition is
+          // 100ms, but add some buffer to be safe.
+          setTimeout(calculateTerminalSize, 150);
+        });
+      }
+    };
+
+    var removeTerminalResizeListeners = function() {
+      $(window).off('resize.terminalsize');
+      if (toggleNavListener) {
+        toggleNavListener();
+        toggleNavListener = null;
+      }
+    };
+
+    $scope.$watch('selectedTab.terminal', function(terminalTabSelected) {
+      if (terminalTabSelected) {
+        if (!characterBoundingBox.height || !characterBoundingBox.width) {
+          Logger.warn("Unable to calculate the bounding box for a character.  Terminal will not be able to resize.");
+        } else {
+          addTerminalResizeListeners();
+        }
+        $timeout(calculateTerminalSize, 0);
+      } else {
+        removeTerminalResizeListeners();
+      }
+    });
+
+    var makeTerminal = function() {
+      return {
+        containerName: 'compute',
+        containerState: 'disconnected',
+        isVisible: true,
+        isUsed: true,
+      };
+    };
+
+    // ---- End of Terminal
+
     var vmiLoadingError;
 
     ProjectsService
@@ -75,6 +179,12 @@ angular.module('openshiftConsole')
             $scope.vmi = vm;
             $scope.vmiLoaded = true;
             updatePods();
+
+            $scope.term = makeTerminal();
+            // hack for container-terminal
+            // https://github.com/kubevirt/kubevirt/blob/f38377abba0b7595d4dbc6da7887a188fac7f78f/api/openapi-spec/swagger.json#L2986
+            // /apis/subresources.kubevirt.io/v1alpha2/namespaces/{namespace}/virtualmachineinstances/{name}/console
+            $scope.pod = '/apis/subresources.kubevirt.io/v1alpha2/namespaces/'+ $scope.projectName + '/virtualmachineinstances/'+ $scope.vmi.metadata.name + '/console';
           }, function (error) {
             $scope.vmiLoaded = true;
             vmiLoadingError = error;
@@ -130,7 +240,23 @@ angular.module('openshiftConsole')
         $scope.$on('$destroy', function(){
           DataService.unwatchAll(watches);
         });
-    }));
+
+        var focusTerminal = function() {
+          $('.terminal:visible').focus();
+        };
+
+        $scope.hasFullscreen = FullscreenService.hasFullscreen(true);
+        $scope.fullscreenTerminal = function() {
+          FullscreenService.requestFullscreen('#container-terminal-wrapper');
+          // Give focus back to the terminal after the user clicks the link.
+          setTimeout(focusTerminal);
+        };
+
+        $scope.exitFullscreen = function() {
+          FullscreenService.exitFullscreen();
+        };
+
+      }));
   });
 
 angular.module('openshiftConsole')

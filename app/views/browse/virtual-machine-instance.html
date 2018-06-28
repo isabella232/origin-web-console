@@ -104,6 +104,49 @@
               </div>
             </uib-tab>
 
+            <uib-tab active="selectedTab.terminal" select="terminalTabWasSelected = true">
+              <uib-tab-heading>Terminal</uib-tab-heading>
+
+              <div class="mar-top-xl mar-bottom-xl">
+                <div class="mar-bottom-md">
+                  <span class="pficon pficon-info" aria-hidden="true"></span>
+                  <span ng-class="{ 'mar-right-md': hasFullscreen }">
+                      When you navigate away from this virtual machine, any open terminal connections will be closed.
+                      This will kill any foreground processes you started from the&nbsp;terminal.
+                    </span>
+                  <a href=""
+                     ng-if="hasFullscreen"
+                     ng-click="fullscreenTerminal()"
+                     class="nowrap"
+                     aria-hidden="true">Open Fullscreen Terminal</a>
+                </div>
+
+                <alerts ng-if="term.status === 'disconnected'" alerts="terminalDisconnectAlert"></alerts>
+
+                <div id="container-terminal-wrapper"
+                     class="container-terminal-wrapper"
+                     ng-class="{ disconnected: selectedTerminalContainer.status === 'disconnected' }">
+                    <div ng-if="hasFullscreen" class="fullscreen-toggle" aria-hidden="true">
+                      <a ng-href="" ng-click="fullscreenTerminal()" class="go-fullscreen" title="Open Fullscreen Terminal"><i class="fa fa-expand"></i></a>
+                      <a ng-href="" ng-click="exitFullscreen()" class="exit-fullscreen" title="Exit Fullscreen"><i class="fa fa-compress"></i></a>
+                    </div>
+                    <kubernetes-container-terminal-kubevirt
+                      prevent="!terminalTabWasSelected"
+                      ng-if="term.isUsed"
+                      ng-show="term.isVisible"
+                      pod="pod"
+                      container="term.containerName"
+                      status="term.status"
+                      rows="terminalRows"
+                      cols="terminalCols"
+                      autofocus="true"
+                    >
+                    </kubernetes-container-terminal-kubevirt>
+
+                  </div>
+              </div>
+            </uib-tab>
+
             <uib-tab ng-if="metricsAvailable && pods[0]" heading="Metrics" active="selectedTab.metrics">
               <!-- Use ng-if to remove the metrics directive when the tab is not active so
                    we don't update in the background. -->

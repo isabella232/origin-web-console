@@ -89,6 +89,21 @@ kubernetes-container-terminal {
   }
 }
 
+kubernetes-container-terminal-kubevirt {
+  .terminal-actions {
+    top: 0;
+    right: 25px;
+    .btn {
+      background: none;
+      .btn-link();
+      .style-terminal-action();
+    }
+    .spinner {
+      top: 5px;
+    }
+  }
+}
+
 // .terminal-font is used for row/col character calculations.
 // It must match what's in the xterm.js config in kubernetes-container-terminal.
 // However, the line-height is dependent on the font, so instead of a value
