@@ -4091,7 +4091,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
     "</div>\n" +
     "{{vmi.metadata.name}}\n" +
-    "<small class=\"meta\">created {{vmi.metadata.creationTimestamp | amTimeAgo}}</small>\n" +
+    "<small class=\"meta\">created {{vmi.metadata.creationTimestamp | amTimeAgo + ' ago'}}</small>\n" +
     "<small class=\"meta\" ng-if=\"vm.metadata.deletionTimestamp\">(expires {{vm.metadata.deletionTimestamp | date : 'medium'}})</small>\n" +
     "</h1>\n" +
     "<labels labels=\"vmi.metadata.labels\" clickable=\"true\" kind=\"virtual-machines\" title-kind=\"Virtual machines\" project-name=\"{{vmi.metadata.namespace}}\" limit=\"3\"></labels>\n" +
