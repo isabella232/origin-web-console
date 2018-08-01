@@ -31,7 +31,7 @@
             </ul>
           </div>
           {{vmi.metadata.name}}
-          <small class="meta">created {{vmi.metadata.creationTimestamp | amTimeAgo}}</small>
+          <small class="meta">created {{vmi.metadata.creationTimestamp | amTimeAgo + ' ago'}}</small>
           <small class="meta" ng-if="vm.metadata.deletionTimestamp">(expires {{vm.metadata.deletionTimestamp | date : 'medium'}})</small>
         </h1>
         <labels labels="vmi.metadata.labels"
