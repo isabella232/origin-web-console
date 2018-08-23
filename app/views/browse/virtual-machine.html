@@ -42,6 +42,7 @@
             </ul>
           </div>
           {{vm.metadata.name}}
+          <small class="meta">Hello GY!</small>
           <small class="meta">created {{vm.metadata.creationTimestamp | amTimeAgo : false}}</small>
           <small class="meta" ng-if="vm.metadata.deletionTimestamp">(expires {{vm.metadata.deletionTimestamp | date : 'medium'}})</small>
         </h1>

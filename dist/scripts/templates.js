@@ -4087,6 +4087,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
     "</div>\n" +
     "{{vmi.metadata.name}}\n" +
+    "<small class=\"meta\">Hello GY!</small>\n" +
     "<small class=\"meta\">created {{vmi.metadata.creationTimestamp | amTimeAgo : false}}</small>\n" +
     "<small class=\"meta\" ng-if=\"vm.metadata.deletionTimestamp\">(expires {{vm.metadata.deletionTimestamp | date : 'medium'}})</small>\n" +
     "</h1>\n" +
@@ -4202,6 +4203,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</ul>\n" +
     "</div>\n" +
     "{{vm.metadata.name}}\n" +
+    "<small class=\"meta\">Hello GY!</small>\n" +
     "<small class=\"meta\">created {{vm.metadata.creationTimestamp | amTimeAgo : false}}</small>\n" +
     "<small class=\"meta\" ng-if=\"vm.metadata.deletionTimestamp\">(expires {{vm.metadata.deletionTimestamp | date : 'medium'}})</small>\n" +
     "</h1>\n" +
@@ -13318,6 +13320,7 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<div class=\"word-break\">\n" +
     "<span class=\"vm-detail-key\">State:</span>\n" +
     "&nbsp;\n" +
+    "<small class=\"meta\">Hello GY!</small>\n" +
     "<vm-state state=\"row.vmi | vmStateText : row.vm\"></vm-state>\n" +
     "<vm-actions-line vmi=\"row.vmi\" vm=\"row.vm\" context=\"row.state.context\"></vm-actions-line>\n" +
     "</div>\n" +
