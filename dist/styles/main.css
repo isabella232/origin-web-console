@@ -408,7 +408,7 @@ dd{margin-left:0}
 @media (min-width:415px){.dl-horizontal dt{float:left;width:160px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .dl-horizontal dd{margin-left:180px}
 }
-.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
+.btn-group-vertical>.btn-group:after,.btn-toolbar:after,.clearfix:after,.container-fluid:after,.container:after,.dl-horizontal dd:after,.dropdown-menu>li>a,.form-horizontal .form-group:after,.list-view-pf .list-group-item:after,.modal-footer:after,.modal-header:after,.nav:after,.navbar-collapse:after,.navbar-header:after,.navbar:after,.pager:after,.panel-body:after,.row:after{clear:both}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #9c9c9c}
 .initialism{font-size:90%;text-transform:uppercase}
 blockquote{padding:10px 20px;margin:0 0 20px;font-size:15px;border-left:5px solid #f1f1f1}
@@ -831,7 +831,7 @@ tbody.collapse.in{display:table-row-group}
 .btn-group>.btn-group:first-child:not(:last-child)>.btn:last-child,.btn-group>.btn-group:first-child:not(:last-child)>.dropdown-toggle,.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle){border-bottom-right-radius:0;border-top-right-radius:0}
 .btn-group>.btn-group:last-child:not(:first-child)>.btn:first-child,.btn-group>.btn:last-child:not(:first-child),.btn-group>.dropdown-toggle:not(:first-child){border-bottom-left-radius:0;border-top-left-radius:0}
 .btn-group-vertical>.btn:not(:first-child):not(:last-child),.btn-group>.btn-group:not(:first-child):not(:last-child)>.btn,.btn-group>.btn:not(:first-child):not(:last-child):not(.dropdown-toggle){border-radius:0}
-.dropdown-menu>li>a{display:block;clear:both;font-weight:400;color:#363636}
+.dropdown-menu>li>a{display:block;font-weight:400;color:#363636}
 .dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover{text-decoration:none;color:#4d5258;background-color:#def3ff}
 .dropdown-menu>.active>a,.dropdown-menu>.active>a:focus,.dropdown-menu>.active>a:hover{color:#fff;text-decoration:none;outline:0}
 .dropdown-menu>.disabled>a,.dropdown-menu>.disabled>a:focus,.dropdown-menu>.disabled>a:hover{color:#9c9c9c}
@@ -2972,7 +2972,6 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .contextselector-pf .bootstrap-select>.dropdown-toggle{background:0 0;border:0;box-shadow:none!important;color:#d1d1d1;padding-bottom:20px;padding-left:10px;padding-top:20px}
 .contextselector-pf .bootstrap-select>.dropdown-toggle:focus{color:#fff;outline:dotted thin!important;outline:-webkit-focus-ring-color auto 5px!important;outline-offset:-2px!important}
 .contextselector-pf .bootstrap-select>.dropdown-toggle:hover{background:#303030;color:#fff;outline:0!important}
-.ColVis_Button:active:focus,.search-pf .has-clear .clear:focus,table.dataTable th:active{outline:0}
 .contextselector-pf .bootstrap-select>.dropdown-toggle .filter-option{text-overflow:ellipsis}
 .contextselector-pf .bootstrap-select .dropdown-menu li a span.text{display:block;overflow-x:hidden;text-overflow:ellipsis;width:100%}
 .layout-pf-fixed .navbar-pf-vertical.navbar-pf-contextselector{z-index:1040}
@@ -2992,6 +2991,7 @@ select.bs-select-hidden,select.selectpicker{display:none!important}
 .contextselector-pf .dropdown-menu{margin-top:0;width:100%}
 .contextselector-pf .form-group{margin:0 5px 5px}
 .navbar-pf-vertical .nav.contextselector-pf .nav-item-iconic{align-items:center;display:flex;padding:23px 20px 18px 10px}
+.ColVis_Button:active:focus{outline:0}
 .ColVis_catcher{position:absolute;z-index:999}
 .ColVis_collection{background-color:#fff;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:0 6px 12px rgba(3,3,3,.175);box-shadow:0 6px 12px rgba(3,3,3,.175);background-clip:padding-box;list-style:none;margin:-1px 0 0;padding:5px 10px;width:150px;z-index:1000}
 .ColVis_collection label{font-weight:400;margin-bottom:5px;margin-top:5px;padding-left:20px}
@@ -3634,6 +3634,7 @@ a.disabled{color:#8b8d8f;cursor:not-allowed;text-decoration:none}
 .search-pf.has-button .form-group .btn.btn-sm{font-size:10.7px}
 .search-pf.has-button .form-group .form-control{float:left}
 .search-pf .has-clear .clear{background:rgba(255,255,255,0);border:0;height:25px;line-height:1;padding:0;position:absolute;right:1px;top:1px;width:28px}
+.search-pf .has-clear .clear:focus{outline:0}
 .search-pf .has-clear .form-control{padding-right:30px}
 .search-pf .has-clear .form-control::-ms-clear{display:none}
 .search-pf .has-clear .input-lg+.clear{height:31px;width:28px}
@@ -3714,6 +3715,7 @@ table.dataTable thead .sorting_asc,table.dataTable thead .sorting_desc{color:#00
 table.dataTable thead .sorting_asc:after,table.dataTable thead .sorting_desc:after{content:"\f107";font-family:FontAwesome;font-size:10px;font-weight:400;height:9px;left:7px;line-height:12px;position:relative;top:2px;vertical-align:baseline;width:12px}
 table.dataTable thead .sorting_asc:before,table.dataTable thead .sorting_desc:before{background:#0088ce;content:"";height:2px;position:absolute;left:0;top:0;width:100%}
 table.dataTable thead .sorting_asc:after{content:"\f106";top:-3px}
+table.dataTable th:active{outline:0}
 .table-view-pf-empty.blank-slate-pf{background-color:#f5f5f5;border:1px solid #d1d1d1;border-radius:0;margin-top:-1px}
 .table-view-pf-toolbar.toolbar-pf{background-color:#f5f5f5;border-bottom:none;border-left:1px solid #d1d1d1;border-right:1px solid #d1d1d1;border-top:1px solid #d1d1d1;box-shadow:none;margin-left:0px;margin-right:0px}
 .table-view-pf-toolbar.toolbar-pf .toolbar-pf-results{border-top:1px solid #d1d1d1;min-height:40px;line-height:40px}
@@ -5765,7 +5767,6 @@ dl.secret-data pre{margin-bottom:0}
 .right-section .right-container .right-content{flex:1 1 auto;position:relative;overflow-x:hidden;overflow-y:auto;width:100%}
 .right-section .right-container .right-header{flex:0 0 auto;width:100%}
 .sidebar-right{background-color:#fff;border-left:1px solid #dadada;display:none;flex:0 0 210px;position:relative}
-.membership .action-set,.show-sidebar-right .middle{flex:1 1 auto}
 .sidebar-right .dl-horizontal{margin:0 0 20px}
 .sidebar-right .dl-horizontal dt{text-align:left}
 .sidebar-right .dl-horizontal dd{word-wrap:break-word;word-break:break-word;overflow-wrap:break-word;min-width:0}
@@ -5775,6 +5776,7 @@ dl.secret-data pre{margin-bottom:0}
 .sidebar-right .sidebar-header{border-color:#e4e4e4;margin-bottom:0;margin-top:20px}
 .sidebar-right .sidebar-header h2{margin-left:20px}
 .sidebar-right .sidebar-help{color:#9c9c9c}
+.show-sidebar-right .middle{flex:1 1 auto}
 @media (min-width:768px){.show-sidebar-right{display:flex;min-height:100%}
 .show-sidebar-right .sidebar-right{display:block}
 }
@@ -6183,6 +6185,7 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .projects-header{margin-top:21px}
 .projects-instructions-link{white-space:pre}
 .projects-list{border-top:0;box-shadow:0 3px 1px -2px rgba(0,0,0,.15),0 2px 2px 0 rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.09);margin-bottom:20px}
+kubernetes-container-terminal .terminal-actions .btn,kubernetes-container-terminal .terminal-actions .btn:active,kubernetes-container-terminal .terminal-actions .btn:focus,kubernetes-container-terminal .terminal-actions .btn:hover,kubernetes-container-terminal-kubevirt .terminal-actions .btn,kubernetes-container-terminal-kubevirt .terminal-actions .btn:active,kubernetes-container-terminal-kubevirt .terminal-actions .btn:focus,kubernetes-container-terminal-kubevirt .terminal-actions .btn:hover{border-color:transparent}
 .projects-list .project-info:hover{background-color:#def3ff}
 @media (min-width:768px){.projects-list .origin-modal-popup{margin-left:15px;margin-top:-25px;width:370px}
 .projects-list .origin-modal-popup.position-above{margin-top:20px}
@@ -6220,14 +6223,19 @@ alerts+.chromeless .log-loading-msg{margin-top:130px}
 .container-terminal-wrapper:-fullscreen .fullscreen-toggle{right:55px}
 .container-terminal-wrapper:-fullscreen .fullscreen-toggle .go-fullscreen{display:none}
 kubernetes-container-terminal .terminal-actions{top:0;right:25px}
+kubernetes-container-terminal .terminal-actions .spinner,kubernetes-container-terminal-kubevirt .terminal-actions .spinner{top:5px}
 kubernetes-container-terminal .terminal-actions .btn{background:0 0;font-weight:400;border-radius:0;color:#9c9c9c;cursor:pointer;font-size:18px;padding:5px}
 fieldset[disabled] kubernetes-container-terminal .terminal-actions .btn,kubernetes-container-terminal .terminal-actions .btn,kubernetes-container-terminal .terminal-actions .btn.active,kubernetes-container-terminal .terminal-actions .btn:active,kubernetes-container-terminal .terminal-actions .btn[disabled]{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
-kubernetes-container-terminal .terminal-actions .btn,kubernetes-container-terminal .terminal-actions .btn:active,kubernetes-container-terminal .terminal-actions .btn:focus,kubernetes-container-terminal .terminal-actions .btn:hover{border-color:transparent}
 kubernetes-container-terminal .terminal-actions .btn:focus,kubernetes-container-terminal .terminal-actions .btn:hover{background-color:transparent}
 fieldset[disabled] kubernetes-container-terminal .terminal-actions .btn:focus,fieldset[disabled] kubernetes-container-terminal .terminal-actions .btn:hover,kubernetes-container-terminal .terminal-actions .btn[disabled]:focus,kubernetes-container-terminal .terminal-actions .btn[disabled]:hover{color:#9c9c9c;text-decoration:none}
 kubernetes-container-terminal .terminal-actions .btn,kubernetes-container-terminal .terminal-actions .btn:active{-webkit-box-shadow:none;box-shadow:none}
 kubernetes-container-terminal .terminal-actions .btn:active,kubernetes-container-terminal .terminal-actions .btn:focus,kubernetes-container-terminal .terminal-actions .btn:hover{color:#fff;text-decoration:none}
-kubernetes-container-terminal .terminal-actions .spinner{top:5px}
+kubernetes-container-terminal-kubevirt .terminal-actions .btn{background:0 0;font-weight:400;border-radius:0;color:#9c9c9c;cursor:pointer;font-size:18px;padding:5px}
+fieldset[disabled] kubernetes-container-terminal-kubevirt .terminal-actions .btn,kubernetes-container-terminal-kubevirt .terminal-actions .btn,kubernetes-container-terminal-kubevirt .terminal-actions .btn.active,kubernetes-container-terminal-kubevirt .terminal-actions .btn:active,kubernetes-container-terminal-kubevirt .terminal-actions .btn[disabled]{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
+kubernetes-container-terminal-kubevirt .terminal-actions .btn:focus,kubernetes-container-terminal-kubevirt .terminal-actions .btn:hover{background-color:transparent}
+fieldset[disabled] kubernetes-container-terminal-kubevirt .terminal-actions .btn:focus,fieldset[disabled] kubernetes-container-terminal-kubevirt .terminal-actions .btn:hover,kubernetes-container-terminal-kubevirt .terminal-actions .btn[disabled]:focus,kubernetes-container-terminal-kubevirt .terminal-actions .btn[disabled]:hover{color:#9c9c9c;text-decoration:none}
+kubernetes-container-terminal-kubevirt .terminal-actions .btn,kubernetes-container-terminal-kubevirt .terminal-actions .btn:active{-webkit-box-shadow:none;box-shadow:none}
+kubernetes-container-terminal-kubevirt .terminal-actions .btn:active,kubernetes-container-terminal-kubevirt .terminal-actions .btn:focus,kubernetes-container-terminal-kubevirt .terminal-actions .btn:hover{color:#fff;text-decoration:none}
 .terminal-font{font-family:"Courier New",Courier,monospace;font-size:12px;line-height:14px}
 .environment-from-editor .faux-form-control,.key-value-editor .faux-form-control{background-color:#fff;background-image:none;border:1px solid #bbb;border-radius:1px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);color:#363636;display:table-cell;font-size:12px;height:26px;line-height:1.66666667;padding:2px 6px;-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;width:100%;word-break:break-all;word-break:break-word;overflow-wrap:break-word}
 .environment-from-editor .faux-form-control.readonly,.key-value-editor .faux-form-control.readonly{background-color:#f5f5f5;-webkit-box-shadow:none;box-shadow:none;color:#8b8d8f;opacity:1}
@@ -6244,6 +6252,7 @@ kubernetes-container-terminal .terminal-actions .spinner{top:5px}
 @media (min-width:992px){.environment-from-editor .key-value-editor-input .ui-select,.key-value-editor .key-value-editor-input .ui-select{float:left;width:50%}
 .environment-from-editor .key-value-editor-input .ui-select+.ui-select,.key-value-editor .key-value-editor-input .ui-select+.ui-select{padding-top:0;padding-left:5px}
 }
+.membership .action-set{flex:1 1 auto}
 .membership .content-pane .add-role-to{margin-left:-1px}
 .membership .content-pane .col-add-role-inputs{display:flex}
 .membership .content-pane .col-heading{border-bottom:1px solid #ededed;display:none}
@@ -6350,3 +6359,11 @@ notification-drawer-wrapper .expanded-notification.unread .drawer-pf-notificatio
 .vm-detail-key{font-weight:600}
 .vm-detail-value{padding-left:3px}
 .vm-detail-state-actions{padding-left:12px}
+kubernetes-container-terminal-kubevirt,kubernetes-container-terminal-kubevirt .terminal-wrapper{display:inline-block;position:relative}
+kubernetes-container-terminal-kubevirt .terminal{display:inline-block;outline:0;padding:2px 0 2px 2px}
+kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar{height:10px;overflow:visible;width:15px}
+kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar-corner{background:0 0}
+kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,.25);box-shadow:inset 1px 1px 0 rgba(255,255,255,.1),inset 0 -1px 0 rgba(255,255,255,.07)}
+kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar-thumb:active,kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar-thumb:hover{background-color:rgba(255,255,255,.35)}
+kubernetes-container-terminal-kubevirt .terminal .xterm-viewport::-webkit-scrollbar-track{background:0 0}
+kubernetes-container-terminal-kubevirt .terminal-actions{display:inline-block;position:absolute;right:34px;top:10px;vertical-align:top;z-index:10}

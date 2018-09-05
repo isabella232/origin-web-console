@@ -4159,6 +4159,27 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "</div>\n" +
     "</div>\n" +
     "</uib-tab>\n" +
+    "<uib-tab active=\"selectedTab.terminal\" select=\"terminalTabWasSelected = true\">\n" +
+    "<uib-tab-heading>Terminal</uib-tab-heading>\n" +
+    "<div class=\"mar-top-xl mar-bottom-xl\">\n" +
+    "<div class=\"mar-bottom-md\">\n" +
+    "<span class=\"pficon pficon-info\" aria-hidden=\"true\"></span>\n" +
+    "<span ng-class=\"{ 'mar-right-md': hasFullscreen }\">\n" +
+    "When you navigate away from this virtual machine, any open terminal connections will be closed. This will kill any foreground processes you started from the&nbsp;terminal.\n" +
+    "</span>\n" +
+    "<a href=\"\" ng-if=\"hasFullscreen\" ng-click=\"fullscreenTerminal()\" class=\"nowrap\" aria-hidden=\"true\">Open Fullscreen Terminal</a>\n" +
+    "</div>\n" +
+    "<alerts ng-if=\"term.status === 'disconnected'\" alerts=\"terminalDisconnectAlert\"></alerts>\n" +
+    "<div id=\"container-terminal-wrapper\" class=\"container-terminal-wrapper\" ng-class=\"{ disconnected: selectedTerminalContainer.status === 'disconnected' }\">\n" +
+    "<div ng-if=\"hasFullscreen\" class=\"fullscreen-toggle\" aria-hidden=\"true\">\n" +
+    "<a ng-href=\"\" ng-click=\"fullscreenTerminal()\" class=\"go-fullscreen\" title=\"Open Fullscreen Terminal\"><i class=\"fa fa-expand\"></i></a>\n" +
+    "<a ng-href=\"\" ng-click=\"exitFullscreen()\" class=\"exit-fullscreen\" title=\"Exit Fullscreen\"><i class=\"fa fa-compress\"></i></a>\n" +
+    "</div>\n" +
+    "<kubernetes-container-terminal-kubevirt prevent=\"!terminalTabWasSelected\" ng-if=\"term.isUsed\" ng-show=\"term.isVisible\" pod=\"pod\" container=\"term.containerName\" status=\"term.status\" rows=\"terminalRows\" cols=\"terminalCols\" autofocus=\"true\">\n" +
+    "</kubernetes-container-terminal-kubevirt>\n" +
+    "</div>\n" +
+    "</div>\n" +
+    "</uib-tab>\n" +
     "<uib-tab ng-if=\"metricsAvailable && pods[0]\" heading=\"Metrics\" active=\"selectedTab.metrics\">\n" +
     "\n" +
     "<pod-metrics ng-if=\"selectedTab.metrics\" pod=\"pods[0]\" alerts=\"alerts\">\n" +
