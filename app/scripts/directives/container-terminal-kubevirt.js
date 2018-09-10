@@ -230,8 +230,8 @@
                                     ws.onmessage = function(ev) { // plain.kubevirt.io is binary and single-channel protocol
                                       var reader = new FileReader();
                                       reader.addEventListener('loadend', function (e) {
-                                        var text = e.srcElement.result;
-                                        console.log(text);
+                                        var target = e.target || e.srcElement;
+                                        var text = target.result;
                                         term.write(text);
                                       });
                                       reader.readAsText(ev.data);

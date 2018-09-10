@@ -15210,9 +15210,9 @@ m.focus();
 u.onmessage = function(e) {
 var t = new FileReader();
 t.addEventListener("loadend", function(e) {
-var t = e.srcElement.result;
-console.log(t);
-m.write(t);
+var t = e.target || e.srcElement;
+var n = t.result;
+m.write(n);
 });
 t.readAsText(e.data);
 };
