@@ -75,11 +75,11 @@
                       <dt>Virtual Machine Instance:</dt>
                       <dd>
                         <span ng-if="vmi">
-                          <span dynamic-content="{{vmi | vmStateText}}"
+                          <span dynamic-content="{{vmi | vmStateText : vm}}"
                                 data-toggle="tooltip"
                                 data-trigger="hover"
                                 aria-hidden="true">
-                            <vm-state-icon state="vmi | vmStateText"></vm-state-icon>
+                            <vm-state-icon state="vmi | vmStateText : vm"></vm-state-icon>
                             <a ng-href="{{vmi | navigateResourceURL}}">{{vmi.metadata.name}}</a>
                           </span>
                         </span>

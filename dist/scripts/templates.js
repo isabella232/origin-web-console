@@ -4255,8 +4255,8 @@ angular.module('openshiftConsoleTemplates', []).run(['$templateCache', function(
     "<dt>Virtual Machine Instance:</dt>\n" +
     "<dd>\n" +
     "<span ng-if=\"vmi\">\n" +
-    "<span dynamic-content=\"{{vmi | vmStateText}}\" data-toggle=\"tooltip\" data-trigger=\"hover\" aria-hidden=\"true\">\n" +
-    "<vm-state-icon state=\"vmi | vmStateText\"></vm-state-icon>\n" +
+    "<span dynamic-content=\"{{vmi | vmStateText : vm}}\" data-toggle=\"tooltip\" data-trigger=\"hover\" aria-hidden=\"true\">\n" +
+    "<vm-state-icon state=\"vmi | vmStateText : vm\"></vm-state-icon>\n" +
     "<a ng-href=\"{{vmi | navigateResourceURL}}\">{{vmi.metadata.name}}</a>\n" +
     "</span>\n" +
     "</span>\n" +
