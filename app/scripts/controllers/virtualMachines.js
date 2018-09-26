@@ -116,7 +116,7 @@ angular.module('openshiftConsole')
        */
       function getDomainName(pod) {
         var isVirtLauncher = _.get(pod, 'metadata.labels["kubevirt.io"]') === 'virt-launcher';
-        var domainName = _.get(pod, 'metadata.labels["kubevirt.io/domain"]');
+        var domainName = _.get(pod, 'metadata.annotations["kubevirt.io/domain"]');
         return (isVirtLauncher && domainName) || null;
       }
 
