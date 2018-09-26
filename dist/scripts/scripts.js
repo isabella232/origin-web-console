@@ -8733,7 +8733,7 @@ a.unwatchAll(u);
 }));
 } ]), angular.module("openshiftConsole").factory("VmHelpers", [ "KubevirtVersions", function(e) {
 function t(e) {
-var t = "virt-launcher" === _.get(e, 'metadata.labels["kubevirt.io"]'), n = _.get(e, 'metadata.labels["kubevirt.io/domain"]');
+var t = "virt-launcher" === _.get(e, 'metadata.labels["kubevirt.io"]'), n = _.get(e, 'metadata.annotations["kubevirt.io/domain"]');
 return t && n || null;
 }
 return {
